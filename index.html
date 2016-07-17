@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="animals">
+
+<head>
+    <meta charset="utf-8">
+    <title>Gallery site</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="assignment.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>ANIMAL GALLERY</h1>
+
+    <div ng-controller="animalCtrl as animal">
+
+        <div class="row center-block main-div">
+            <div class="col-sm-8 col-sm-offset-2 s-div" ng-repeat="animal_list in animal.data">
+                <h2>{{animal_list.name}}</h2>
+
+                <div class="well well-sm">
+                    <div class="col-md-6" ng-repeat="item in animal_list.animals">
+                        <h3>{{item.name}}</h3>
+                        <img ng-src="{{item.image1}}" class="img-rounded center-block">
+                        <img ng-src="{{item.image2}}" class="img-rounded center-block">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#animal-info" ng-click="animal.changeActiveAnimal(item)">Learn more...
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="animal-info">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4>{{animal.activeAnimal.name}}</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <img ng-src="{{animal.activeAnimal.image1}}" class="center-block" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <img ng-src="{{animal.activeAnimal.image2}}" class="center-block" />
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>{{animal.activeAnimal.description}}</p>
+                                <button class="btn btn-success pull-right" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--End of controller-->
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <footer>
+                <i><p>Aihaiti Abudureheman &copy;2015-2016 wiredelta.com</p></i>
+            </footer>
+        </div>
+    </div>
+
+
+    <!--these are the js file -->
+    <script src="angular.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="assignment.js"></script>
+    <script src="controller/list.js"></script>
+</body>
+
+</html>
